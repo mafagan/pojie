@@ -43,7 +43,6 @@ void ControlHandler(DWORD request)
 
 void ServiceMain(int argc, char** argv)
 {
-	int error;
 	ServiceStatus.dwServiceType = SERVICE_WIN32;
 	ServiceStatus.dwCurrentState = SERVICE_START_PENDING;
 	ServiceStatus.dwControlsAccepted = SERVICE_ACCEPT_SHUTDOWN | SERVICE_ACCEPT_STOP;
@@ -60,6 +59,15 @@ void ServiceMain(int argc, char** argv)
 	{
 		OutputDebugString("Register Service Control Handler");
 		return;
+	}
+
+	//向SCM报告运行状态
+	ServiceStatus.dwCurrentState = SERVICE_RUNNING;
+	SetServiceStatus(hStatus, &ServiceStatus);
+
+	while (ServiceStatus.dwCurrentState == SERVICE_RUNNING)
+	{
+		//TODO
 	}
 
 
