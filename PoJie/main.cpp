@@ -8,6 +8,8 @@ void ServiceMain(int argc, char** argv);
 void ControlHandler(DWORD request);
 int InitService();
 char serviceName[] = "TestApp";
+bool installService();
+bool uninstallService();
 
 int main()
 {
@@ -81,4 +83,19 @@ void ServiceMain(int argc, char** argv)
 	}
 
 
+}
+
+bool installService()
+{
+	SC_HANDLE hSCM, AppService;
+	bool success = false;
+
+	hSCM = OpenSCManager(NULL, NULL, SC_MANAGER_ENUMERATE_SERVICE | SC_MANAGER_CREATE_SERVICE);
+	if (!hSCM)
+	{
+		OutputDebugString("Open SCManager failed.");
+		return false;
+	}
+
+	//AppService = CreateService(hSCM, serviceName, serviceName, SERVICE_ALL_ACCESS | SERVICE_STOP, SERVICE_WIN32_OWN_PROCESS, SERVICE_AUTO_START, SERVICE_ERROR_NORMAL, )
 }
