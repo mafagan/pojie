@@ -34,10 +34,20 @@ void ControlHandler(DWORD request)
 	{
 	case SERVICE_CONTROL_STOP:
 		OutputDebugString("TestApp stopped.");
-
+		ServiceStatus.dwWin32ExitCode = 0;
+		ServiceStatus.dwCurrentState = SERVICE_STOPPED;
+		SetServiceStatus(hStatus, &ServiceStatus);
+		return;
+	case SERVICE_CONTROL_SHUTDOWN:
+		OutputDebugString("Test App Sropped");
+		ServiceStatus.dwCurrentState = SERVICE_STOPPED;
+		SetServiceStatus(hStatus, &ServiceStatus);
+		return;
 	default:
 		break;
 	}
+
+	SetServiceStatus(hStatus, &ServiceStatus);
 	return;
 }
 
