@@ -8,7 +8,8 @@ void ServiceMain(int argc, char** argv);
 void ControlHandler(DWORD request);
 int InitService();
 char serviceName[] = "TestApp";
-bool installService();
+char targetService[] = "IncrediBuild_Coordinator";
+bool restartService();
 bool uninstallService();
 
 int main()
@@ -85,9 +86,10 @@ void ServiceMain(int argc, char** argv)
 
 }
 
-bool installService()
+bool restartService()
 {
-	SC_HANDLE hSCM, AppService;
+	SC_HANDLE hSCM, TargetService;
+	SERVICE_STATUS targetServiceStatus;
 	bool success = false;
 
 	hSCM = OpenSCManager(NULL, NULL, SC_MANAGER_ENUMERATE_SERVICE | SC_MANAGER_CREATE_SERVICE);
@@ -98,4 +100,9 @@ bool installService()
 	}
 
 	//AppService = CreateService(hSCM, serviceName, serviceName, SERVICE_ALL_ACCESS | SERVICE_STOP, SERVICE_WIN32_OWN_PROCESS, SERVICE_AUTO_START, SERVICE_ERROR_NORMAL, )
+	TargetService = OpenService(hSCM, targetService, SERVICE_ALL_ACCESS);
+	QueryServiceStatus(TargetService, &targetServiceStatus);
+	ControlService(TargetService, SERVICE_CONTROL_STOP, &targetServiceStatus);
+
+	return true;
 }
