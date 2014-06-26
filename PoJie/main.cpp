@@ -1,6 +1,5 @@
 #include <windows.h>
 #include <stdio.h>
-#include <afx.h>
 SERVICE_STATUS ServiceStatus;
 SERVICE_STATUS_HANDLE hStatus;
 
@@ -15,13 +14,14 @@ bool uninstallService();
 int main()
 {
 	SERVICE_TABLE_ENTRY ServiceTable[2];
-	ServiceTable[0].lpServiceName = (LPWSTR)(CString(serviceName).AllocSysString());
+	ServiceTable[0].lpServiceName = serviceName;
 	ServiceTable[0].lpServiceProc = (LPSERVICE_MAIN_FUNCTION)ServiceMain;
 
 	ServiceTable[1].lpServiceName = NULL;
 	ServiceTable[1].lpServiceName = NULL;
 
 	StartServiceCtrlDispatcher(ServiceTable);
+	getchar();
 	return 0;
 }
 
@@ -80,9 +80,28 @@ void ServiceMain(int argc, char** argv)
 
 	while (ServiceStatus.dwCurrentState == SERVICE_RUNNING)
 	{
+		Sleep(1000*10);
+		restartService();
+	}
+	/* release version
+
+	SYSTEMTIME lpsystemtime;
+	GetLocalTime(&lpsystemtime);
+	while (ServiceStatus.dwCurrentState == SERVICE_RUNNING)
+	{
+		Sleep(1000*60*59);
+		
+		if (lpsystemtime.wHour == 1)
+		{
+			bool res = restartService();
+			if (!res)
+			{
+				OutputDebugString("Can not restart service.");
+			}
+		}
 		//TODO
 	}
-
+	*/
 
 }
 
@@ -102,7 +121,12 @@ bool restartService()
 	//AppService = CreateService(hSCM, serviceName, serviceName, SERVICE_ALL_ACCESS | SERVICE_STOP, SERVICE_WIN32_OWN_PROCESS, SERVICE_AUTO_START, SERVICE_ERROR_NORMAL, )
 	TargetService = OpenService(hSCM, targetService, SERVICE_ALL_ACCESS);
 	QueryServiceStatus(TargetService, &targetServiceStatus);
-	ControlService(TargetService, SERVICE_CONTROL_STOP, &targetServiceStatus);
-
+	bool res = ControlService(TargetService, SERVICE_CONTROL_STOP, &targetServiceStatus);
+	
+	if (!res)
+	{
+		OutputDebugString("Can not control target service.");
+		return false;
+	}
 	return true;
 }
