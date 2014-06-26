@@ -8,7 +8,8 @@ void ControlHandler(DWORD request);
 int InitService();
 char serviceName[] = "TestApp";
 char targetService[] = "IncrediBuild_Coordinator";
-bool restartService();
+bool stopTargetService();
+bool startTargetService();
 bool uninstallService();
 
 int main()
@@ -80,8 +81,10 @@ void ServiceMain(int argc, char** argv)
 
 	while (ServiceStatus.dwCurrentState == SERVICE_RUNNING)
 	{
-		Sleep(1000*10);
-		restartService();
+		Sleep(1000*5);
+		stopTargetService();
+		Sleep(1000*5);
+		startTargetService();
 	}
 	/* release version
 
@@ -105,7 +108,7 @@ void ServiceMain(int argc, char** argv)
 
 }
 
-bool restartService()
+bool stopTargetService()
 {
 	SC_HANDLE hSCM, TargetService;
 	SERVICE_STATUS targetServiceStatus;
@@ -123,6 +126,32 @@ bool restartService()
 	QueryServiceStatus(TargetService, &targetServiceStatus);
 	bool res = ControlService(TargetService, SERVICE_CONTROL_STOP, &targetServiceStatus);
 	
+	if (!res)
+	{
+		OutputDebugString("Can not control target service.");
+		return false;
+	}
+	return true;
+}
+
+bool startTargetService()
+{
+	SC_HANDLE hSCM, TargetService;
+	SERVICE_STATUS targetServiceStatus;
+	bool success = false;
+
+	hSCM = OpenSCManager(NULL, NULL, SC_MANAGER_ENUMERATE_SERVICE | SC_MANAGER_CREATE_SERVICE);
+	if (!hSCM)
+	{
+		OutputDebugString("Open SCManager failed.");
+		return false;
+	}
+
+	//AppService = CreateService(hSCM, serviceName, serviceName, SERVICE_ALL_ACCESS | SERVICE_STOP, SERVICE_WIN32_OWN_PROCESS, SERVICE_AUTO_START, SERVICE_ERROR_NORMAL, )
+	TargetService = OpenService(hSCM, targetService, SERVICE_ALL_ACCESS);
+	QueryServiceStatus(TargetService, &targetServiceStatus);
+	bool res = StartService(TargetService, 0, NULL);
+
 	if (!res)
 	{
 		OutputDebugString("Can not control target service.");

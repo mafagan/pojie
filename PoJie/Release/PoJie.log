@@ -1,0 +1,33 @@
+﻿生成启动时间为 2014/6/26 10:28:34。
+     1>项目“E:\PoJie\PoJie\PoJie.vcxproj”在节点 2 上(Build 个目标)。
+     1>PrepareForBuild:
+         正在创建目录“E:\PoJie\Release\”。
+       InitializeBuildStatus:
+         正在创建“Release\PoJie.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         D:\Programs\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         main.cpp
+     1>main.cpp(17): error C2440: “=”: 无法从“char [8]”转换为“LPWSTR”
+                 与指向的类型无关；转换要求 reinterpret_cast、C 样式转换或函数样式转换
+     1>main.cpp(30): error C2664: “OutputDebugStringW”: 不能将参数 1 从“const char [20]”转换为“LPCWSTR”
+                 与指向的类型无关；转换要求 reinterpret_cast、C 样式转换或函数样式转换
+     1>main.cpp(39): error C2664: “OutputDebugStringW”: 不能将参数 1 从“const char [17]”转换为“LPCWSTR”
+                 与指向的类型无关；转换要求 reinterpret_cast、C 样式转换或函数样式转换
+     1>main.cpp(45): error C2664: “OutputDebugStringW”: 不能将参数 1 从“const char [17]”转换为“LPCWSTR”
+                 与指向的类型无关；转换要求 reinterpret_cast、C 样式转换或函数样式转换
+     1>main.cpp(68): error C2664: “RegisterServiceCtrlHandlerW”: 不能将参数 1 从“char [8]”转换为“LPCWSTR”
+                 与指向的类型无关；转换要求 reinterpret_cast、C 样式转换或函数样式转换
+     1>main.cpp(73): error C2664: “OutputDebugStringW”: 不能将参数 1 从“const char [33]”转换为“LPCWSTR”
+                 与指向的类型无关；转换要求 reinterpret_cast、C 样式转换或函数样式转换
+     1>main.cpp(117): error C2664: “OutputDebugStringW”: 不能将参数 1 从“const char [23]”转换为“LPCWSTR”
+                 与指向的类型无关；转换要求 reinterpret_cast、C 样式转换或函数样式转换
+     1>main.cpp(122): error C2664: “OpenServiceW”: 不能将参数 2 从“char [25]”转换为“LPCWSTR”
+                 与指向的类型无关；转换要求 reinterpret_cast、C 样式转换或函数样式转换
+     1>main.cpp(124): warning C4800: “BOOL”: 将值强制为布尔值“true”或“false”(性能警告)
+     1>main.cpp(128): error C2664: “OutputDebugStringW”: 不能将参数 1 从“const char [32]”转换为“LPCWSTR”
+                 与指向的类型无关；转换要求 reinterpret_cast、C 样式转换或函数样式转换
+     1>已完成生成项目“E:\PoJie\PoJie\PoJie.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:00.77
