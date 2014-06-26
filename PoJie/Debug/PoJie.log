@@ -1,12 +1,12 @@
-﻿生成启动时间为 2014/6/26 10:55:58。
+﻿生成启动时间为 2014/6/26 14:37:55。
      1>项目“E:\PoJie\PoJie\PoJie.vcxproj”在节点 2 上(Build 个目标)。
      1>InitializeBuildStatus:
-         正在对“Debug\PoJie.unsuccessfulbuild”执行 Touch 任务。
+         正在创建“Debug\PoJie.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
        ClCompile:
          D:\Programs\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
          main.cpp
-     1>e:\pojie\pojie\main.cpp(127): warning C4800: “BOOL”: 将值强制为布尔值“true”或“false”(性能警告)
-     1>e:\pojie\pojie\main.cpp(153): warning C4800: “BOOL”: 将值强制为布尔值“true”或“false”(性能警告)
+     1>e:\pojie\pojie\main.cpp(135): warning C4800: “BOOL”: 将值强制为布尔值“true”或“false”(性能警告)
+     1>e:\pojie\pojie\main.cpp(161): warning C4800: “BOOL”: 将值强制为布尔值“true”或“false”(性能警告)
        Link:
          D:\Programs\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\PoJie\Debug\PoJie.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\PoJie\Debug\PoJie.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\PoJie\Debug\PoJie.lib" /MACHINE:X86 Debug\main.obj
          PoJie.vcxproj -> E:\PoJie\Debug\PoJie.exe
@@ -17,4 +17,4 @@
 
 生成成功。
 
-已用时间 00:00:00.83
+已用时间 00:00:01.26

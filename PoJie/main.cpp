@@ -1,3 +1,5 @@
+/*鸡蛋出品，必属精品*/
+
 #include <windows.h>
 #include <stdio.h>
 SERVICE_STATUS ServiceStatus;
@@ -6,8 +8,8 @@ SERVICE_STATUS_HANDLE hStatus;
 void ServiceMain(int argc, char** argv);
 void ControlHandler(DWORD request);
 int InitService();
-char serviceName[] = "TestApp";
-char targetService[] = "IncrediBuild_Coordinator";
+char serviceName[] = "IncrediRestart";
+char targetService[] = "IncrediBuild_Agent";
 bool stopTargetService();
 bool startTargetService();
 bool uninstallService();
@@ -79,15 +81,16 @@ void ServiceMain(int argc, char** argv)
 	ServiceStatus.dwCurrentState = SERVICE_RUNNING;
 	SetServiceStatus(hStatus, &ServiceStatus);
 
+	/*
 	while (ServiceStatus.dwCurrentState == SERVICE_RUNNING)
 	{
 		Sleep(1000*5);
 		stopTargetService();
 		Sleep(1000*5);
 		startTargetService();
-	}
-	/* release version
-
+	}*/
+	
+	
 	SYSTEMTIME lpsystemtime;
 	GetLocalTime(&lpsystemtime);
 	while (ServiceStatus.dwCurrentState == SERVICE_RUNNING)
@@ -96,15 +99,20 @@ void ServiceMain(int argc, char** argv)
 		
 		if (lpsystemtime.wHour == 1)
 		{
-			bool res = restartService();
+			bool res = stopTargetService();
 			if (!res)
 			{
-				OutputDebugString("Can not restart service.");
+				OutputDebugString("Can not stop service.");
+			}
+			Sleep(1000*5);
+			res = startTargetService();
+			if (!res)
+			{
+				OutputDebugString("Can not start service.");
 			}
 		}
-		//TODO
+		
 	}
-	*/
 
 }
 
