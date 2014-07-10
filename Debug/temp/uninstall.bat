@@ -1,0 +1,2 @@
+IBSetupConsole.exe /uninstall
+pause

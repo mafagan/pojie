@@ -1,14 +1,20 @@
-﻿生成启动时间为 2014/6/26 14:37:55。
+﻿生成启动时间为 2014/7/9 10:30:49。
      1>项目“E:\PoJie\PoJie\PoJie.vcxproj”在节点 2 上(Build 个目标)。
      1>InitializeBuildStatus:
          正在创建“Debug\PoJie.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
        ClCompile:
-         D:\Programs\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         D:\Programs\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
          main.cpp
-     1>e:\pojie\pojie\main.cpp(135): warning C4800: “BOOL”: 将值强制为布尔值“true”或“false”(性能警告)
-     1>e:\pojie\pojie\main.cpp(161): warning C4800: “BOOL”: 将值强制为布尔值“true”或“false”(性能警告)
+         _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+     1>e:\pojie\pojie\main.cpp(16): warning C4005: “MAX_PATH”: 宏重定义
+                 c:\program files (x86)\windows kits\8.0\include\shared\minwindef.h(60) : 参见“MAX_PATH”的前一个定义
+     1>e:\pojie\pojie\main.cpp(236): warning C4552: “!=”: 运算符不起任何作用；应输入带副作用的运算符
+     1>e:\pojie\pojie\main.cpp(268): warning C4800: “BOOL”: 将值强制为布尔值“true”或“false”(性能警告)
+     1>e:\pojie\pojie\main.cpp(312): warning C4800: “BOOL”: 将值强制为布尔值“true”或“false”(性能警告)
+     1>e:\pojie\pojie\main.cpp(343): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\programs\microsoft visual studio 11.0\vc\include\time.inl(112) : 参见“localtime”的声明
        Link:
-         D:\Programs\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\PoJie\Debug\PoJie.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\PoJie\Debug\PoJie.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\PoJie\Debug\PoJie.lib" /MACHINE:X86 Debug\main.obj
+         D:\Programs\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\PoJie\Debug\PoJie.exe" /INCREMENTAL /NOLOGO /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"D:\Programs\Microsoft Visual Studio 11.0\VC\Include\Manifest\dpiaware.manifest" /DEBUG /PDB:"E:\PoJie\Debug\PoJie.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\PoJie\Debug\PoJie.lib" /MACHINE:X86 Debug\main.obj
          PoJie.vcxproj -> E:\PoJie\Debug\PoJie.exe
        FinalizeBuildStatus:
          正在删除文件“Debug\PoJie.unsuccessfulbuild”。
@@ -17,4 +23,4 @@
 
 生成成功。
 
-已用时间 00:00:01.26
+已用时间 00:00:04.61
